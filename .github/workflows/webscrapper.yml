@@ -50,14 +50,16 @@ jobs:
         run: |
           gsutil cp car_data.csv gs://webscrapping-abbs44/
 
-      - name: Notify on Success
-        uses: actions/github-script@v6
+      - name: Set Status Check on Success
         if: success()
+        uses: actions/github-script@v6
         with:
           script: |
-            github.issues.createComment({
+            github.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.payload.pull_request ? context.payload.pull_request.number : context.run_id,
-              body: "🎉 The web scraper has successfully run and the results have been uploaded to Google Cloud Storage."
+              sha: context.sha,
+              state: 'success',
+              description: 'Web scraper ran successfully and uploaded data to GCS.',
+              context: 'Web Scraper Status'
             })
