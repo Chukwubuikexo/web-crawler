@@ -55,4 +55,3 @@ jobs:
         with:
           body: |
             This workflow got triggered by a push to the main branch.
-          reactions: '+1'
