@@ -50,15 +50,9 @@ jobs:
         run: |
           gsutil cp car_data.csv gs://webscrapping-abbs44/
 
-      - name: Notify
-        uses: https://github.com/dawidd6/action-send-mail@v3
+      - name: Create commit comment
+        uses: peter-evans/commit-comment@v3
         with:
-            to: ${{ secrets.MAIL_TO }}
-            from: Ben
-            subject:  Github Actions job result
-            priority: high
-            convert_markdown: true
-            html_body: |
-                ### Job ${{ job.status }}
-
-                ${{ github.repository }}: [${{ github.ref }}@${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/actions)
+          body: |
+            This workflow got triggered by a push to the main branch.
+          reactions: '+1'
