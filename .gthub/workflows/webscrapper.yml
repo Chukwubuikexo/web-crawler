@@ -1,0 +1,51 @@
+name: Run Web Scraper
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs nightly at midnight UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  run-webscraper:
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run web scraper
+        run: |
+          python webcrawler.py
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: "access_token"
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: "latest"
+
+      - name: Upload logs and CSV to GCS
+        run: |
+          gsutil cp car_data.csv gs://webscrapping-abbs44/
