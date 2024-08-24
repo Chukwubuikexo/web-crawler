@@ -50,16 +50,15 @@ jobs:
         run: |
           gsutil cp car_data.csv gs://webscrapping-abbs44/
 
-      - name: Set Status Check on Success
-        if: success()
-        uses: actions/github-script@v6
+      - name: Notify
+        uses: https://github.com/dawidd6/action-send-mail@v3
         with:
-          script: |
-            github.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha,
-              state: 'success',
-              description: 'Web scraper ran successfully and uploaded data to GCS.',
-              context: 'Web Scraper Status'
-            })
+            to: ${{ secrets.MAIL_TO }}
+            from: Ben
+            subject:  Github Actions job result
+            priority: high
+            convert_markdown: true
+            html_body: |
+                ### Job ${{ job.status }}
+
+                ${{ github.repository }}: [${{ github.ref }}@${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/actions)
