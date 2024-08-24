@@ -20,8 +20,7 @@ user_agent = random.choice(user_agents)
 # Set up Chrome options
 chrome_options = Options()
 chrome_options.add_argument(f"user-agent={user_agent}")
-chrome_options.add_argument("--headless")  # Optional: run in headless mode
-# chrome_options.add_argument(f'--proxy-server=http://your_proxy:port')  # Optional: use proxy
+chrome_options.add_argument("--headless") 
 
 # Set up the Selenium WebDriver with the specified options
 driver = webdriver.Chrome(options=chrome_options)
