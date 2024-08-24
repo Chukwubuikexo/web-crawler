@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 0 * * *" # Runs nightly at midnight UTC
   push:
-    branches:
+    branches: # runs at any push
       - main
 
 jobs:
