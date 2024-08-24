@@ -49,9 +49,3 @@ jobs:
       - name: Upload logs and CSV to GCS
         run: |
           gsutil cp car_data.csv gs://webscrapping-abbs44/
-
-      - name: Create commit comment
-        uses: peter-evans/commit-comment@v3
-        with:
-          body: |
-            This workflow got triggered by a push to the main branch.
