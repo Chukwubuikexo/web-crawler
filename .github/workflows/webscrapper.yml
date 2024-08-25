@@ -46,10 +46,13 @@ jobs:
         with:
           version: "latest"
 
+      - name: check
+        working-directory: apps/webscraping
+        run: ls
+
       - name: Upload CSV to bigquery
         working-directory: apps/webscraping
-        run: |
-          ls \ 
+        run: | 
           bq load --source_format=CSV  \
           arctic-victor-432307-h3:cars_dataset.cars_list \
           car_data.csv
