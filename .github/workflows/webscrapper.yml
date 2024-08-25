@@ -9,6 +9,10 @@ on:
 
 jobs:
   run-webscraper:
+    permissions:
+      contents: "read"
+      id-token: "write"
+
     runs-on: ubuntu-latest
 
     steps:
@@ -16,18 +20,18 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.x" # Replace with compatible Python version
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r apps/webscraping/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run web scraper
         run: |
-          python apps/webscraping/webcrawler.py
+          python webcrawler.py
 
       - name: Authenticate to Google Cloud
         id: auth
@@ -42,8 +46,9 @@ jobs:
         with:
           version: "latest"
 
-      - name: Upload CSV to BigQuery
-        run: |
-          bq load --source_format=CSV \
+      - name: Upload CSV to bigquery
+        run: | 
+          bq load --source_format=CSV  \
           arctic-victor-432307-h3:cars_dataset.cars_list \
-          apps/webscraping/car_data.csv
+          car_data.csv
+ 
