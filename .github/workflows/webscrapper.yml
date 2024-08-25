@@ -46,6 +46,9 @@ jobs:
         with:
           version: "latest"
 
-      - name: Upload logs and CSV to GCS
+      - name: Upload CSV to bigquery
+        working-directory: apps/webscraping
         run: |
-          gsutil cp car_data.csv gs://webscrapping-abbs44/
+          bq load --source_format=CSV  \
+          arctic-victor-432307-h3:cars_dataset.cars_list \
+          car_data.csv
