@@ -12,7 +12,7 @@ For this project, I selected [carsdirect.com](https://www.carsdirect.com) as the
 - **Data Handling:** The `.yml` file includes instructions for incrementally loading the `car_list` results into the Big Query Warehouse.
 
 ### Notifications
-- **Monitoring:** GitHub Actions is configured to send email notifications for both successful scraping operations and any errors or failures, ensuring timely monitoring and alerts.
+- **Monitoring & Alerting:** GitHub Actions is configured to send email notifications for both successful scraping operations and any errors or failures, ensuring timely monitoring and alerts. I will also receive alerts on my mail if the CI/CD pipeline has an error i will also ne notified via email
 
 ### Challenges
 - I had to search about five websites before settling for carsdirect
