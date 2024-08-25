@@ -45,7 +45,6 @@ for car in cars:
         data.append({
             'car_name': car_name,
             'car_price': car_price,
-            'timestamp': datetime.now()
         })
         time.sleep(random.uniform(3, 7))  # Random delay
     except Exception as e:
