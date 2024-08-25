@@ -51,4 +51,4 @@ jobs:
         run: |
           bq load --source_format=CSV  \
           arctic-victor-432307-h3:cars_dataset.cars_list \
-          car_data.csv
+          car_data.csv
