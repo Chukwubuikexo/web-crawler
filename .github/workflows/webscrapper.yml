@@ -1,4 +1,4 @@
-name: Run Web Scraper
+name: Run Web Scraper #name of workflow
 
 on:
   schedule:

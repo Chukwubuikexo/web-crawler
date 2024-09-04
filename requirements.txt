@@ -1,4 +1,0 @@
-selenium
-schedule
-python-dotenv
-pandas
