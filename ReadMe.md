@@ -17,4 +17,4 @@ For this project, I selected [carsdirect.com](https://www.carsdirect.com) as the
 ### Challenges
 - I had to search about five websites before settling for carsdirect
 - Selecting a scraping tool -  I first tested beautiful soup, but on further reasearch i found it less efficient in handling sites with IP blocking
-- I tried many yml settings to enable notifcations before reading github documentation on [notifications](https://github.com/notifications) 
+- I tried many yml settings to enable notifcations before reading github documentation on [notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications) 
