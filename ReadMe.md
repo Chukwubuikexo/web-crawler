@@ -1,7 +1,7 @@
 ## E-commerce Car Listings Scraper
 
 ### Overview
-For this project, I selected [carsdirect.com](https://www.carsdirect.com) as the target e-commerce website for car listings and pricing information.
+Scrap e-commerce website for car listings and pricing information.
 
 ### Tools and Techniques
 - **Web Scraping Tool:** Selenium was chosen for its suitability in handling the HTML structure and DOM elements of the site.
@@ -14,7 +14,3 @@ For this project, I selected [carsdirect.com](https://www.carsdirect.com) as the
 ### Notifications
 - **Monitoring & Alerting:** GitHub Actions is configured to send email notifications for both successful scraping operations and any errors or failures, ensuring timely monitoring and alerts. I will also receive alerts on my mail if the CI/CD pipeline has an error i will also ne notified via email
 
-### Challenges
-- I had to search about five websites before settling for carsdirect
-- Selecting a scraping tool -  I first tested beautiful soup, but on further reasearch i found it less efficient in handling sites with IP blocking
-- I tried many yml settings to enable notifcations before reading github documentation on [notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications) 
